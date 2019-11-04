@@ -7,9 +7,10 @@ using System.Text;
 
 namespace BuilderVsConcat
 {
-    [SimpleJob(RuntimeMoniker.Net461, baseline: true)]
-    [SimpleJob(RuntimeMoniker.NetCoreApp22)]
-    [SimpleJob(RuntimeMoniker.NetCoreApp30)]
+    //[SimpleJob(RuntimeMoniker.Net461, baseline: true)]
+    //[SimpleJob(RuntimeMoniker.NetCoreApp22)]
+    //[SimpleJob(RuntimeMoniker.NetCoreApp30)]
+    [ClrJob, CoreJob]
     [RPlotExporter]
     public class BuilderVsConcat
     {
