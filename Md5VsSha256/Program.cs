@@ -2,18 +2,27 @@
 using System.Security.Cryptography;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
+using BenchmarkDotNet.Jobs;
 
 namespace BenchMarkDotNet.SandBox
 {
+    [SimpleJob(RuntimeMoniker.Net461, baseline: true)]
+    [SimpleJob(RuntimeMoniker.NetCoreApp22)]
+    [SimpleJob(RuntimeMoniker.NetCoreApp30)]
+    [RPlotExporter]
+    [CsvMeasurementsExporter]
     public class Md5VsSha256
     {
-        private const int N = 10000;
-        private readonly byte[] data;
-
         private readonly SHA256 sha256 = SHA256.Create();
         private readonly MD5 md5 = MD5.Create();
+        private byte[] data;
 
-        public Md5VsSha256()
+        [Params(1000, 10000)]
+        //[Params(1000)]
+        public int N = 0;
+
+        [GlobalSetup]
+        public void Setup()
         {
             data = new byte[N];
             new Random(42).NextBytes(data);

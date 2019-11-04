@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Running;
 using System;
 using System.Linq;
@@ -6,6 +7,10 @@ using System.Text;
 
 namespace BuilderVsConcat
 {
+    [SimpleJob(RuntimeMoniker.Net461, baseline: true)]
+    [SimpleJob(RuntimeMoniker.NetCoreApp22)]
+    [SimpleJob(RuntimeMoniker.NetCoreApp30)]
+    [RPlotExporter]
     public class BuilderVsConcat
     {
         private readonly int N = 10000;
