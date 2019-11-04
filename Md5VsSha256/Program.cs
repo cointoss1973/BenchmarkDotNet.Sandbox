@@ -4,7 +4,7 @@ using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 using BenchmarkDotNet.Jobs;
 
-namespace BenchMarkDotNet.SandBox
+namespace Md5VsSha256
 {
     [SimpleJob(RuntimeMoniker.Net461, baseline: true)]
     [SimpleJob(RuntimeMoniker.NetCoreApp22)]
