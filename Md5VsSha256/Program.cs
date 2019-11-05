@@ -7,19 +7,18 @@ using BenchmarkDotNet.Jobs;
 namespace Md5VsSha256
 {
     [SimpleJob(RuntimeMoniker.Net461, baseline: true)]
-    [SimpleJob(RuntimeMoniker.NetCoreApp22)]
+    //[SimpleJob(RuntimeMoniker.NetCoreApp22)]
     [SimpleJob(RuntimeMoniker.NetCoreApp30)]
     [RPlotExporter]
-    [CsvMeasurementsExporter]
     public class Md5VsSha256
     {
         private readonly SHA256 sha256 = SHA256.Create();
         private readonly MD5 md5 = MD5.Create();
         private byte[] data;
 
-        [Params(1000, 10000)]
+        //[Params(1000, 10000)]
         //[Params(1000)]
-        public int N = 0;
+        public int N = 1000;
 
         [GlobalSetup]
         public void Setup()
